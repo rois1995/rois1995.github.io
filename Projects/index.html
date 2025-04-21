@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projects – Your Name</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Projects</h1>
+    <div id="navbar"></div>
+	<script>
+	  fetch('/ReusableCode/navbar.html')
+	    .then(res => res.text())
+	    .then(html => {
+	      document.getElementById('navbar').innerHTML = html;
+	    });
+	</script>
+  </header>
+
+  <main>
+    <section>
+      <h2>My Work</h2>
+      <ul>
+        <li><a href="project1.html">⚙️ CFD Solver with Immersed Boundaries</a></li>
+        <li><a href="project2.html">🧠 Machine Learning for Flow Control</a></li>
+        <!-- Add more as needed -->
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Your Name. All rights reserved.
+  </footer>
+</body>
+</html>

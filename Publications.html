@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Publications</title>
+  <link rel="stylesheet" href="/CSS/style.css">
+  
+  <!-- MathJax (optional if you need LaTeX math in your publications) -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  <!-- BibTeX-JS -->
+  <script src="https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js/bibtex.min.js"></script>
+</head>
+<body>
+
+  <!-- Shared navbar (optional, if using fetch() to load it) -->
+  <div id="navbar"></div>
+  <script>
+    fetch('/ReusableCode/navbar.html')
+      .then(res => res.text())
+      .then(html => { document.getElementById('navbar').innerHTML = html; });
+  </script>
+
+  <main>
+    <h1>📚 Publications</h1>
+
+    <!-- Template for how each publication is shown -->
+    <div class="bibtex_template">
+      <div class="if author"><span class="author"></span>, </div>
+      <div class="if title"><strong><span class="title"></span></strong>, </div>
+      <div class="if journal"><em><span class="journal"></span></em>, </div>
+      <div class="if year"><span class="year"></span>.</div>
+      <br><br>
+    </div>
+
+    <!-- This is where your publications will be rendered -->
+    <div id="bibtex_display"></div>
+
+    <!-- Load your .bib file -->
+    <script>
+      window.onload = function () {
+        bibtexify("Assets/mybib.bib", "bibtex_display");
+      };
+    </script>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+---
+import type {Publication} from '../data/publications';
+const {pub}=Astro.props as {pub:Publication};
+---
+<article class="pub-row" data-search={`${pub.title} ${pub.authors} ${pub.venue} ${pub.year}`.toLowerCase()} data-type={pub.type}>
+  <span class="year">{pub.year}</span>
+  <div><h3>{pub.title}</h3><p>{pub.authors} · {pub.venue}</p></div>
+  {pub.doi ? <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noopener noreferrer" aria-label={`Read ${pub.title} via DOI`}>DOI ↗</a> : <span class="pub-type" style="font-size:12px;color:var(--copy)">{pub.type}</span>}
+</article>

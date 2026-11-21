@@ -1,0 +1,12 @@
+---
+interface Props { topic: string; code?: string; compact?: boolean; }
+const {topic, code = 'FIGURE / PENDING', compact = false} = Astro.props;
+---
+<div class:list={['figure-placeholder', {compact}]} role="img" aria-label={`Placeholder for future verified figure: ${topic}`}>
+  <div class="figure-grid" aria-hidden="true"></div>
+  <div class="placeholder-top"><span class="placeholder-dot" aria-hidden="true"></span>{code}</div>
+  <div class="placeholder-bottom">
+    <span>{topic}</span>
+    <small>Verified research visual to be added</small>
+  </div>
+</div>

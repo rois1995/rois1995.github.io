@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+interface Props {
+  title: string;
+  description: string;
+  section?: 'home' | 'research' | 'software' | 'publications' | 'about';
+}
+const { title, description, section = 'home' } = Astro.props;
+const links = [
+  { name: 'Research', href: '/research/', id: 'research' },
+  { name: 'Software', href: '/software/', id: 'software' },
+  { name: 'Publications', href: '/publications/', id: 'publications' },
+  { name: 'About', href: '/about/', id: 'about' }
+];
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#091925" />
+  <meta name="description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <title>{title} | Andrea Rausa</title>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="/" class="brand" aria-label="Andrea Rausa – homepage"><span class="brand-icon">AR</span><span>ANDREA <strong>RAUSA</strong></span></a>
+      <nav class="desktop-nav" aria-label="Primary">
+        {links.map(link => <a href={link.href} aria-current={section === link.id ? 'page' : undefined}>{link.name}</a>)}
+        <a class="nav-contact" href="mailto:andrea.rausa@polimi.it">Get in touch <span aria-hidden="true">↗</span></a>
+      </nav>
+      <details class="mobile-menu">
+        <summary aria-label="Open navigation">Menu <span aria-hidden="true">☰</span></summary>
+        <nav aria-label="Mobile">
+          {links.map(link => <a href={link.href} aria-current={section === link.id ? 'page' : undefined}>{link.name}</a>)}
+          <a href="mailto:andrea.rausa@polimi.it">Get in touch ↗</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+  <main id="content"><slot /></main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="/" class="brand footer-brand"><span class="brand-icon">AR</span><span>ANDREA <strong>RAUSA</strong></span></a>
+        <p>Computational fluid dynamics, numerical methods, and reliable scientific software.</p>
+        <p class="footer-affiliation">Politecnico di Milano · Department of Aerospace Science and Technology</p>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:andrea.rausa@polimi.it">Email ↗</a>
+        <a href="https://github.com/rois1995" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/andrea-rausa-b129a819a/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href="https://aero.polimi.it/it/personale/andrea.rausa" target="_blank" rel="noopener noreferrer">Institutional profile ↗</a>
+      </div>
+    </div>
+    <div class="container footer-bottom"><span>© {new Date().getFullYear()} Andrea Rausa</span><span>Research portfolio · selected public work only</span></div>
+  </footer>
+</body>
+</html>

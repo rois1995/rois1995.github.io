@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import FigurePlaceholder from '../../components/FigurePlaceholder.astro';
+import {projects} from '../../data/research';
+export function getStaticPaths(){return projects.map(project=>({params:{slug:project.slug},props:{project}}));}
+const {project}=Astro.props;
+---
+<Base title={project.title} description={project.short} section="research">
+  <div class="page-hero"><div class="container">
+    <div class="breadcrumb"><a href="/research/">Research</a> / {project.category}</div>
+    <p class="eyebrow">{project.period}</p><h1>{project.title}</h1><p>{project.short}</p>
+  </div></div>
+  <section class="section"><div class="container detail-layout">
+    <article class="prose">
+      <h2>Overview</h2><p>{project.introduction}</p>
+      <div style="margin:28px 0"><FigurePlaceholder topic={project.imageTopic} code={project.imageCode} /></div>
+      <h2>Scope</h2><ul>{project.scope.map(item=><li>{item}</li>)}</ul>
+      <h2>My contributions</h2><ul>{project.contribution.map(item=><li>{item}</li>)}</ul>
+      <h2>Why this work matters</h2><p>{project.takeaway}</p>
+      <div class="note">This page summarizes public research. Further technical figures, methods, and quantitative results will be included only after source verification and approval.</div>
+    </article>
+    <aside class="detail-aside">
+      <h3>Project information</h3><div class="pills">{project.tags.map(tag=><span class="pill">{tag}</span>)}</div>
+      <small>{project.period}</small>
+      <h3 style="margin-top:29px">Public sources</h3>
+      {project.sources.map(source=><a href={source.href} target={source.href.startsWith('http')?'_blank':undefined} rel={source.href.startsWith('http')?'noopener noreferrer':undefined}>{source.label} ↗</a>)}
+      <h3 style="margin-top:29px">Related publications</h3>
+      {project.relatedPublications.map(title=><p style="font-size:13px;color:var(--copy);margin:10px 0">{title}</p>)}
+      <a href="/publications/" style="margin-top:25px">Explore all publications ↗</a>
+    </aside>
+  </div></section>
+  <section class="section light"><div class="container"><a href="/research/" class="text-link">← Back to all projects</a></div></section>
+</Base>

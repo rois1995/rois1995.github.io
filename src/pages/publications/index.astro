@@ -1,0 +1,38 @@
+---
+import Base from '../../layouts/Base.astro';
+import PubRow from '../../components/PubRow.astro';
+import {publications} from '../../data/publications';
+---
+<Base title="Publications" description="Selected publications by Andrea Rausa: peer-reviewed journal papers, conference contributions, and technical reports on CFD, aerodynamics and icing." section="publications">
+  <div class="page-hero"><div class="container"><p class="eyebrow">Scientific output</p><h1>Publications.</h1><p>A curated bibliography drawn from the research CV and public publication records. Links are provided when verified DOI information is available.</p></div></div>
+  <section class="section light"><div class="container">
+    <div class="section-head"><div><p class="section-label">Bibliography</p><h2>Research papers and reports.</h2></div><p class="section-intro">Search by title, year, or author, or narrow the results by publication type.</p></div>
+    <div class="filters">
+      <label for="pub-search" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Search publications</label>
+      <input type="search" id="pub-search" placeholder="Search publications…" autocomplete="off" />
+      <label for="pub-type" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Publication type</label>
+      <select id="pub-type" aria-label="Publication type"><option value="all">All types</option><option value="Journal">Journals</option><option value="Conference">Conferences</option><option value="Technical report">Technical reports</option></select>
+    </div>
+    <div class="pub-list" id="pub-results">{publications.map(pub=><PubRow pub={pub}/>)}</div>
+    <p class="empty-state" id="pub-empty" hidden>No matching publications. Try a different term or filter.</p>
+    <p style="margin-top:27px;font-size:13px;color:var(--copy)">Publication metadata is curated; bibliographic details can be refined against publisher records as new sources are supplied.</p>
+  </div></section>
+  <script>
+    const input=document.querySelector<HTMLInputElement>('#pub-search');
+    const type=document.querySelector<HTMLSelectElement>('#pub-type');
+    const rows=Array.from(document.querySelectorAll<HTMLElement>('#pub-results .pub-row'));
+    const empty=document.querySelector<HTMLElement>('#pub-empty');
+    const update=()=>{
+      const q=(input?.value||'').toLowerCase().trim();
+      const t=type?.value||'all';
+      let n=0;
+      for (const row of rows){
+        const show=(row.dataset.search||'').includes(q) && (t==='all'||row.dataset.type===t);
+        row.hidden=!show;if(show)n++;
+      }
+      if(empty) empty.hidden=n!==0;
+    };
+    input?.addEventListener('input',update);
+    type?.addEventListener('change',update);
+  </script>
+</Base>

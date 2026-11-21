@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import ResearchCard from '../components/ResearchCard.astro';
+import PubRow from '../components/PubRow.astro';
+import HeroArt from '../components/HeroArt.astro';
+import {projects} from '../data/research';
+import {publications} from '../data/publications';
+import {contributions} from '../data/software';
+---
+<Base title="Computational Fluid Dynamics & Scientific Software" description="Andrea Rausa is a CFD researcher and SU2 contributor at Politecnico di Milano, working on numerical methods, aerodynamics, and scientific software." section="home">
+  <section class="hero"><div class="container hero-inner">
+    <div>
+      <p class="eyebrow">Aerospace research · Scientific computing</p>
+      <h1>Computational fluid dynamics.<br><span class="accent">Built on sound numerics.</span></h1>
+      <p class="hero-lede">I’m Andrea Rausa, a postdoctoral researcher at Politecnico di Milano and an active developer of the open-source SU2 solver. My work connects computational aerodynamics, numerical methods, and robust scientific software.</p>
+      <div class="buttons"><a class="button primary" href="/research/">Explore research <span aria-hidden="true">↗</span></a><a class="button secondary" href="/software/">View SU2 contributions <span aria-hidden="true">↗</span></a></div>
+      <p class="hero-sub">Department of Aerospace Science and Technology · Milan, Italy</p>
+    </div>
+    <HeroArt />
+  </div></section>
+  <div class="highlights"><div class="container">
+    <div class="highlight"><span class="sym" aria-hidden="true">⌁</span><span><strong>SU2</strong> open-source contributor</span></div>
+    <div class="highlight"><span class="sym" aria-hidden="true">◇</span><span><strong>2026</strong> Best Contributor Award</span></div>
+    <div class="highlight"><span class="sym" aria-hidden="true">✦</span><span><strong>2026</strong> Best Presentation Award</span></div>
+  </div></div>
+  <section class="section"><div class="container">
+    <div class="section-head"><div><p class="section-label">01 / Selected research</p><h2>Aerodynamics, physics,<br>and computation.</h2></div><div><p class="section-intro">Selected published projects, from multifidelity aerodynamic analysis to high-lift prediction, icing, and turbulence modelling.</p><a href="/research/" class="text-link">All research projects ↗</a></div></div>
+    <div class="card-grid">{projects.slice(0,4).map(project=><ResearchCard project={project} compact />)}</div>
+  </div></section>
+  <section class="section dark-section"><div class="container dev-layout">
+    <div><p class="section-label">02 / Scientific software</p><h2>Research software that behaves reliably.</h2><p class="dark-lede">My SU2 contributions address correctness, numerical robustness, and HPC scalability—from moving-grid fluxes to MPI-aware output and turbulence models.</p><a href="/software/" class="button secondary">Explore software development ↗</a></div>
+    <div class="dev-grid">{contributions.slice(0,4).map((item,i)=><a class="dev-item" href={item.prs[0].url} target="_blank" rel="noopener noreferrer"><small>{String(i+1).padStart(2,'0')} / {item.area}</small><h3>{item.title}</h3><p>{item.description} <span aria-hidden="true">↗</span></p></a>)}</div>
+  </div></section>
+  <section class="section light"><div class="container">
+    <div class="section-head"><div><p class="section-label">03 / Recent publications</p><h2>Selected publications.</h2></div><a class="text-link" href="/publications/">Full publication list ↗</a></div>
+    <div class="pub-list">{publications.slice(0,4).map(pub=><PubRow pub={pub}/>)}</div>
+  </div></section>
+  <section class="section"><div class="container split">
+    <div class="prose"><p class="section-label">04 / About</p><h2>Researcher and solver developer.</h2><p>I hold a Ph.D. in Aerospace Engineering from Politecnico di Milano (2024). My interests combine physical modelling with the numerical and software foundations required for trustworthy CFD predictions.</p><p>My work spans RANS solvers, turbulence and transition models, verification, and distributed-memory computing. I also have experience teaching CFD, fluid dynamics, and aerodynamics.</p><a class="text-link" href="/about/">More about my background ↗</a></div>
+    <div><p class="section-label">Selected milestones</p><div class="timeline">
+      <div class="timeline-entry"><small>2026</small><h3>SU2 Conference awards</h3><p>Best Contributor and Best Presentation awards</p></div>
+      <div class="timeline-entry"><small>2024 – present</small><h3>Postdoctoral Researcher</h3><p>Politecnico di Milano · Aerospace Engineering</p></div>
+      <div class="timeline-entry"><small>2024</small><h3>Ph.D. in Aerospace Engineering</h3><p>Politecnico di Milano</p></div>
+    </div></div>
+  </div></section>
+</Base>

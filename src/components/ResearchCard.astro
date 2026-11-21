@@ -1,0 +1,14 @@
+---
+import FigurePlaceholder from './FigurePlaceholder.astro';
+import type {Project} from '../data/research';
+const {project, compact=false}=Astro.props as {project:Project;compact?:boolean};
+---
+<article class="research-card">
+  <FigurePlaceholder topic={project.imageTopic} code={project.imageCode} compact={compact} />
+  <div class="body">
+    <div class="pills">{project.tags.map(tag=><span class="pill">{tag}</span>)}</div>
+    <h3><a href={`/research/${project.slug}/`}>{project.title}</a></h3>
+    <p>{project.short}</p>
+    <a href={`/research/${project.slug}/`} class="text-link" aria-label={`Read about ${project.title}`}>Explore project ↗</a>
+  </div>
+</article>

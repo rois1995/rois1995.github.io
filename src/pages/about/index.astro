@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base title="About & Academic Background" description="Andrea Rausa is a postdoctoral researcher and SU2 developer at Politecnico di Milano, with a Ph.D. in Aerospace Engineering." section="about">
+  <div class="page-hero"><div class="container"><p class="eyebrow">Background</p><h1>About Andrea.</h1><p>Postdoctoral researcher in aerospace engineering, with a focus on CFD methods, scientific software development, and reproducible numerical evidence.</p></div></div>
+  <section class="section"><div class="container split">
+    <div class="prose"><p class="section-label">Profile</p><h2>From physical modelling to reliable computation.</h2><p>I am a postdoctoral researcher in the Department of Aerospace Science and Technology at Politecnico di Milano. I obtained my Ph.D. in Aerospace Engineering in 2024, following my bachelor's and master's degrees at the same institution.</p><p>My research covers computational aerodynamics, unsteady and separated flows, icing, RANS modelling, numerical verification, and scalable CFD workflows. Alongside research publications, I contribute directly to the development of the open-source SU2 solver.</p><p>In teaching roles, I have supported courses in computational fluid dynamics, fluid dynamics, and aerodynamics.</p><div class="buttons"><a class="button outline" href="mailto:andrea.rausa@polimi.it?subject=CV%20request">Request current CV ↗</a><a class="button outline" href="https://aero.polimi.it/it/personale/andrea.rausa" target="_blank" rel="noopener noreferrer">Institutional profile ↗</a></div><p style="font-size:12px">A new PDF CV will be linked after final content review; the outdated website PDF is not presented as current.</p></div>
+    <div><p class="section-label">Education & appointments</p><div class="timeline">
+      <div class="timeline-entry"><small>2024 – present</small><h3>Postdoctoral Researcher</h3><p>Politecnico di Milano · Department of Aerospace Science and Technology</p></div>
+      <div class="timeline-entry"><small>2020 – 2024</small><h3>Ph.D. in Aerospace Engineering</h3><p>Politecnico di Milano</p></div>
+      <div class="timeline-entry"><small>2017 – 2020</small><h3>M.Sc. in Aeronautical Engineering</h3><p>Politecnico di Milano · 110/110 cum laude</p></div>
+      <div class="timeline-entry"><small>2014 – 2017</small><h3>B.Sc. in Aerospace Engineering</h3><p>Politecnico di Milano</p></div>
+    </div></div>
+  </section>
+  <section class="section light"><div class="container">
+    <div class="section-head"><div><p class="section-label">Honors</p><h2>Awards and recognition.</h2></div></div>
+    <div class="software-list">
+      <article class="software-card"><p class="section-label">2026 · SU2 Conference</p><h3>Best Contributor Award</h3><p>Recognition for development contributions to the SU2 open-source CFD solver.</p></article>
+      <article class="software-card"><p class="section-label">2026 · SU2 Conference</p><h3>Best Presentation Award</h3><p>“Improving Output Correctness and Parallel I/O Performance in SU2.”</p></article>
+      <article class="software-card"><p class="section-label">2025 · SU2</p><h3>Contributor recognition</h3><p>Recognition for contributions to SU2 releases 8.2.0 and 8.3.0.</p></article>
+      <article class="software-card"><p class="section-label">2020 · ESCO</p><h3>Best Paper Award</h3><p>Award for published computational work on ice shedding.</p></article>
+    </div>
+  </div></section>
+  <section class="section"><div class="container prose">
+    <p class="section-label">Technical expertise</p><h2>Methods and tools.</h2>
+    <div class="chip-list">{['C++','Python','MATLAB','Tcl','SU2','MPI','Finite volumes','Turbulence modelling','Transition','Implicit solvers','Verification & validation','Pointwise','Gmsh','ParaView','STAR-CCM+','LaTeX'].map(x=><span>{x}</span>)}</div>
+  </div></section>
+</Base>

@@ -1,0 +1,10 @@
+---
+import Base from '../../layouts/Base.astro';
+import ResearchCard from '../../components/ResearchCard.astro';
+import {projects} from '../../data/research';
+---
+<Base title="Research Projects" description="Selected published research projects in computational aerodynamics, high-lift prediction, icing, and turbulence modelling." section="research">
+  <div class="page-hero"><div class="container"><p class="eyebrow">Research portfolio</p><h1>Selected research.</h1><p>Published work in computational aerodynamics and numerical modelling. Project figures are explicitly marked placeholders until verified results can be added.</p></div></div>
+  <section class="section"><div class="container"><div class="card-grid">{projects.map(project=><ResearchCard project={project}/>)}</div></div></section>
+  <section class="section light"><div class="container prose"><h2>About the material shown here</h2><p>This section presents completed, publicly documented research. It is not an index of ongoing or unpublished investigations. A figure placeholder does not represent a simulated result or an experimental measurement.</p></div></section>
+</Base>

@@ -1,0 +1,16 @@
+---
+import Base from '../../layouts/Base.astro';
+import {contributions} from '../../data/software';
+---
+<Base title="Scientific Software & SU2 Contributions" description="Documented SU2 source-code contributions in MPI scalability, boundary conditions, numerical fluxes, turbulence and transition models." section="software">
+  <div class="page-hero"><div class="container"><p class="eyebrow">Open-source development</p><h1>Numerics, correctness, and scale.</h1><p>Selected public contributions to the SU2 CFD solver, with links to their source-level discussions and implementation history.</p></div></div>
+  <section class="section"><div class="container">
+    <div class="section-head"><div><p class="section-label">Selected SU2 contributions</p><h2>Code matters as much as equations.</h2></div><p class="section-intro">My focus is reliable numerical behaviour, convergence, regression evidence, and robust execution across large distributed-memory CFD cases.</p></div>
+    <div class="software-list">{contributions.map(item=><article class="software-card"><p class="section-label">{item.area}</p><h3>{item.title}</h3><p>{item.description}</p><div>{item.prs.map(pr=><a class="pr" href={pr.url} target="_blank" rel="noopener noreferrer" style="margin-right:16px">{pr.id} ↗</a>)}</div></article>)}</div>
+  </div></section>
+  <section class="section light"><div class="container split">
+    <div class="prose"><p class="section-label">Approach</p><h2>Verification is part of implementation.</h2><p>For research-grade CFD, correct equations are not sufficient on their own. Discretisation, linearisation, boundary handling, data movement, and output must also be tested for the numerical cases in which they are used.</p></div>
+    <div class="prose"><p class="section-label">Tooling</p><h2>Computational research stack.</h2><div class="chip-list">{['C++','Python','SU2','MPI','Finite-volume methods','RANS / URANS','Verification & validation','Pointwise','Gmsh','ParaView','MATLAB','Tcl'].map(x=><span>{x}</span>)}</div><p style="margin-top:26px"><a href="https://github.com/rois1995" class="text-link" target="_blank" rel="noopener noreferrer">View my GitHub profile ↗</a></p></div>
+  </div></section>
+  <section class="section"><div class="container prose"><p class="note">Only contributions already documented publicly are shown. Active development and unpublished research projects are intentionally excluded.</p></div></section>
+</Base>
